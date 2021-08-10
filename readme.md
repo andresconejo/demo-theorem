@@ -51,7 +51,7 @@ v12.18.3
 
 1. Clone the repo
 ```sh
-git clone https://github.com/libgit2/libgit2
+git clone https://github.com/andresconejo/demo-theorem
 ```
 Checkout the master branch if not already in it
 ```
@@ -68,6 +68,11 @@ To execute the E2E tests built in TestCafe you can execute the following command
 ```sh
 npm run test
 ```
+NOTE: Depending on the OS (In my case MacOS) you may be prompted to allow TestCafe to record your screen. You can navigate to System Preferences -> Security and Privacy -> Privacy. Search for TestCafe Browser Tools App and allow it to run.
+
+<img width="470" alt="Screen Shot 2021-08-10 at 14 27 59" src="https://user-images.githubusercontent.com/9505296/128931922-008f525d-5ce8-45be-8a85-d393902324e9.png">
+
+
 In addition to the base execution, several options are available as parameters to execute as you see fit. For example executing the tests with no retry mechanism.
 
 ```sh
@@ -79,7 +84,7 @@ git clone https://github.com/your_username_/Project-Name.git
 | -------------      | ------------- |
 | --noRetries  	     | Executes the tests without attempting to retry if failures  |
 | --concurrency      | Run the tests concurrently three at a time  |
-| --chrome  	       | Execute the tests in Chrome  |
+| --chrome  	     | Execute the tests in Chrome  |
 | --chrome:headless  | Execute the tests in Chrome headless mode  |
 | --firefox          | Execute the tests in Firefox  |
 | --firefox:headless | Execute the tests in Firefox headless mode  |
@@ -97,9 +102,9 @@ npm run test -- --concurrency
 ```
 
 Default Values:
---noRetries = false (TestCafe retry mechanism will be in place)
---Concurrency = 1 (TestCafe will only execute in one browser instance at a time)
-Default browser = Chrome
+- noRetries = false (TestCafe retry mechanism will be in place)
+- Concurrency = 1 (TestCafe will only execute in one browser instance at a time)
+- Default browser = Chrome
 
 ## Next Steps
 
