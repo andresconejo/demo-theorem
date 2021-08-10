@@ -9,7 +9,7 @@ fixture('Account Creation').beforeEach(async (t) => {
 	await t.navigateTo(BaseURL.BASE_URL);
 });
 
-test.meta({ testRailCaseId: ['accountCreation'] })(
+test.meta('category','accountCreation')(
 	'Create new user',
 	async (t) => {
 		const randomUsername = faker.internet.userName();
@@ -20,7 +20,7 @@ test.meta({ testRailCaseId: ['accountCreation'] })(
 	}
 );
 
-test.meta({ testRailCaseId: ['accountCreation'] })(
+test.meta('category','accountCreation')(
 	'Create new user with existing username',
 	async (t) => {
 		await accountCreation.signUpWithValidCredentials(LoginCredentials.VALID_USERNAME, LoginCredentials.VALID_PASSWORD);
@@ -30,7 +30,7 @@ test.meta({ testRailCaseId: ['accountCreation'] })(
 	}
 );
 
-test.meta({ testRailCaseId: ['accountCreation'] })(
+test.meta('category','accountCreation')(
 	'Create new user with empty password',
 	async (t) => {
 		await dashboard.clickSignUp();
@@ -42,7 +42,7 @@ test.meta({ testRailCaseId: ['accountCreation'] })(
 	}
 );
 
-test.meta({ testRailCaseId: ['accountCreation'] })(
+test.meta('category','accountCreation')(
 	'Create new user with empty username',
 	async (t) => {
 		const randomUsername = faker.internet.userName();
@@ -55,7 +55,7 @@ test.meta({ testRailCaseId: ['accountCreation'] })(
 	}
 );
 
-test.meta({ testRailCaseId: ['accountCreation'] })(
+test.meta('category','accountCreation')(
 	'Newly created user can sign in successfully',
 	async (t) => {
 		const randomUsername = faker.internet.userName();
