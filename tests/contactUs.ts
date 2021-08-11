@@ -12,8 +12,9 @@ test.meta('category','contactUs')(
 	async (t) => {
 		await contactUs.sendMessage(ContactUsConstants.VALID_EMAIL, ContactUsConstants.VALID_NAME, ContactUsConstants.VALID_MESSAGE);
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
 	}
 );
 
@@ -25,8 +26,9 @@ test.meta('category','contactUs')(
 		await contactUs.typeMessageInTextbox(ContactUsConstants.VALID_MESSAGE);
 		await contactUs.clickSendMessageWithDialogHandler();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
 	}
 );
 
@@ -38,8 +40,9 @@ test.meta('category','contactUs')(
 		await contactUs.typeMessageInTextbox(ContactUsConstants.VALID_MESSAGE);
 		await contactUs.clickSendMessageWithDialogHandler();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
 	}
 );
 
@@ -51,7 +54,8 @@ test.meta('category','contactUs')(
 		await contactUs.typeNameInTextbox(ContactUsConstants.VALID_NAME);
 		await contactUs.clickSendMessageWithDialogHandler();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.SEND_MESSAGE_ACK);
 	}
 );

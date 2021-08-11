@@ -6,9 +6,7 @@ export interface DashboardInterface {
 	clickContact: () => Promise<any>;
 	clickHome: () => Promise<any>;
 	clickCart: () => Promise<any>;
-	clickCategoryPhones: () => Promise<any>;
-	clickCategoryLaptops: () => Promise<any>;
-	clickCategoryMonitors: () => Promise<any>;
+	checkCategoryByCategoryName: (category: string) => Promise<any>;
 	verifyDetailsForEachItem: () => Promise<any>;
 	openFirstItem: () => Promise<any>;
 	openSecondItem: () => Promise<any>;
@@ -48,18 +46,20 @@ export class Dashboard implements DashboardInterface {
 		await t.click(this.cart);
 	}
 
-	public async clickCategoryPhones(): Promise<any> {
-		await t.click(this.categoryPhones);
+	/**
+   * Checks each category filters out results correctly
+   * @param category - Category name, much match text in DOM
+   */
+	public async checkCategoryByCategoryName(category: string): Promise<any> {
+		const defaultCount = await this.itemsContainer.childNodeCount - 1;
+		await t.click(Selector('#itemc').withText(category));
+		const currentCount = await this.itemsContainer.childNodeCount - 1;
+		await t.expect(currentCount).lte(defaultCount);
 	}
 
-	public async clickCategoryLaptops(): Promise<any> {
-		await t.click(this.categoryLaptops);
-	}
-
-	public async clickCategoryMonitors(): Promise<any> {
-		await t.click(this.categoryMonitors);
-	}
-
+	/**
+   * Loops around each item in the dashboard and checks it has proper item details
+   */
 	public async verifyDetailsForEachItem(): Promise<any> {
 		const defaultCount = await this.itemsContainer.childNodeCount - 1;
 		for (let i = 0; i < defaultCount; i++) {

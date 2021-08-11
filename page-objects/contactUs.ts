@@ -16,10 +16,20 @@ export class ContactUs implements ContactUsInterface {
 	public readonly closeButton = Selector('button').withText('Close');
 	public readonly sendMessageButton = Selector('button').withText('Send message');
 
+	/**
+   * Clicks on send from menu button, fills form and clicks on send message
+   * @param email - Contact email
+   * @param name - Contact name
+   * @param message - Contact message
+   */
 	public async sendMessage(email: string, name: string, message: string): Promise<any> {
 		await t.click(dashboard.contact);
-		await t.typeText(this.contactUsEmail, email).typeText(this.contactUsName, name).typeText(this.contactUsMessage, message);
-		await t.setNativeDialogHandler(() => true).click(this.sendMessageButton);
+		await t
+			.typeText(this.contactUsEmail, email)
+			.typeText(this.contactUsName, name)
+			.typeText(this.contactUsMessage, message)
+			.setNativeDialogHandler(() => true)
+			.click(this.sendMessageButton);
 	}
 
 	public async typeEmailInTextbox(email: string): Promise<any> {

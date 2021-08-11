@@ -20,7 +20,8 @@ test.meta('category','itemDetails')(
 		await dashboard.openFirstItem();
 		await itemDetails.addItemToCart();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.PRODUCT_ADDED);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.PRODUCT_ADDED);
 	}
 );

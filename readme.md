@@ -21,11 +21,10 @@ Awesome exercise to be reviewed by Theorem LLC
 </ul>
 </li>
 <li><a  href="#usage">Usage</a></li>
-<li><a  href="#next-steps">Next Steps</a></li>
+<li><a  href="#layout">Project Layout</a></li>
+<li><a  href="#next-steps">If I had more time I would have...</a></li>
 </ol>
 </details>
-
-<!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
@@ -34,8 +33,6 @@ This project is a demo project for consideration by the Theorem LLC team of the 
 ### Built With
 * [Testcafe](https://testcafe.io/)
 * [Typescript](https://www.typescriptlang.org/)
-
-<!-- GETTING STARTED -->
 
 ## Getting Started
 
@@ -53,16 +50,12 @@ v12.18.3
 ```sh
 git clone https://github.com/andresconejo/demo-theorem
 ```
-Checkout the master branch if not already in it
-```
-git checkout origin master
-```
 2. Install NPM packages
 ```sh
 npm install
 ```
-<!-- USAGE EXAMPLES -->
-## Usage
+
+## Usage and features added additionaly to enhance client requests
 To execute the E2E tests built in TestCafe you can execute the following command:
 
 ```sh
@@ -83,7 +76,7 @@ npm run test -- --noRetries
 | Parameter  	       | Description |
 | -------------      | ------------- |
 | --noRetries  	     | Executes the tests without attempting to retry if failures  |
-| --concurrency      | Run the tests concurrently three at a time  |
+| --concurrency      | Run the tests concurrently three browser instances at a time  |
 | --video            | Store local video recording if execution fails  |
 | --chrome  	     | Execute the tests in Chrome  |
 | --chrome:headless  | Execute the tests in Chrome headless mode  |
@@ -104,9 +97,22 @@ npm run test -- --concurrency
 
 Default Values:
 - noRetries = false (TestCafe retry mechanism will be in place)
-- Concurrency = 1 (TestCafe will only execute in one browser instance at a time)
+- concurrency = 1 (TestCafe will only execute in one browser instance at a time)
 - Default browser = Chrome
 
-## Next Steps
+## Project layout
+    .
+    ├── artifacts               # Hidden directory storing screenshots, videos and output html report
+    ├── data                    # Store test unput data
+    ├── helpers                 # Functions or classes to support test scripts
+    ├── page-objects            # Page elements and interactions
+    ├── tests                   # Automated Tests
+    ├── result.html             # Last execution sample html report
+    ├── runner.ts               # TestCafe configuration file
+    └── README.md
 
-1. Will finish this later
+## If I had more time I would have...
+
+1. Finished all areas to cover (Play About Us video) was not done, I ran out of time.
+2. Add more data input files to apply more Data Driven tests, for example in the items, account creation, contact us.
+3. Start building necessary configuration for CI/CD integrtion

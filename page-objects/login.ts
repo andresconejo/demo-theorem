@@ -15,16 +15,31 @@ export class Login implements LoginInterface {
 	public readonly loginButton = Selector('button').withText('Log in');
 	public readonly nameOfUser = Selector('#nameofuser');
 
-
+	/**
+   * Clicks on login from menu button, fills form and clicks on login
+   * @param username - Any username
+   * @param password - Any password
+   */
 	public async loginWithCredentials(username: string, password: string): Promise<any> {
 		await t.click(this.loginMenuButton);
-		await t.typeText(this.usernameTextbox, username).typeText(this.passwordTextbox, password).click(this.loginButton);
+		await t
+			.typeText(this.usernameTextbox, username)
+			.typeText(this.passwordTextbox, password)
+			.click(this.loginButton);
 	}
 
+	/**
+   * Clicks on login from menu button, fills form and clicks on login
+   * @param username - Invalid username
+   * @param password - Invalid password
+   */	
 	public async loginWithInvalidCredentials(username: string, password: string): Promise<any> {
 		await t.click(this.loginMenuButton);
-		await t.typeText(this.usernameTextbox, username).typeText(this.passwordTextbox, password);
-		await t.setNativeDialogHandler(() => true).click(this.loginButton);
+		await t
+			.typeText(this.usernameTextbox, username)
+			.typeText(this.passwordTextbox, password)
+			.setNativeDialogHandler(() => true)
+			.click(this.loginButton);
 	}
 
 	public async typeUsernameInTextbox(username: string): Promise<any> {

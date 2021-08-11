@@ -1,6 +1,7 @@
-import { BaseURL } from '../helpers/demoConstants';
+import { BaseURL, LoginCredentials } from '../helpers/demoConstants';
 import dashboard from '../page-objects/dashboard';
 import itemDetails from '../page-objects/itemDetails';
+import login from '../page-objects/login';
 import shoppingCart from '../page-objects/shoppingCart';
 
 // eslint-disable-next-line no-unused-expressions
@@ -9,14 +10,29 @@ fixture('Shopping Cart').beforeEach(async (t) => {
 });
 
 test.meta('category','shoppingCart')(
+	'Add item to cart logged in user',
+	async (t) => {
+		await login.loginWithCredentials(LoginCredentials.VALID_USERNAME, LoginCredentials.VALID_PASSWORD);
+		await dashboard.openFirstItem();
+		const itemTotal = await itemDetails.addItemToCart();
+		const cartEntries = await shoppingCart.getNumberCartEntries();
+		const cartTotal = await shoppingCart.cartTotal.innerText;
+		await t
+			.expect(cartEntries).eql(1)
+			.expect(itemTotal).eql(cartTotal);
+	}
+);
+
+test.meta('category','shoppingCart')(
 	'Add single item to cart',
 	async (t) => {
 		await dashboard.openFirstItem();
 		const itemTotal = await itemDetails.addItemToCart();
 		const cartEntries = await shoppingCart.getNumberCartEntries();
 		const cartTotal = await shoppingCart.cartTotal.innerText;
-		await t.expect(cartEntries).eql(1);
-		await t.expect(itemTotal).eql(cartTotal);
+		await t
+			.expect(cartEntries).eql(1)
+			.expect(itemTotal).eql(cartTotal);
 	}
 );
 
@@ -31,8 +47,9 @@ test.meta('category','shoppingCart')(
 		const itemTotal = parseInt(firstItemTotal) + parseInt(secondItemTotal);
 		const cartEntries = await shoppingCart.getNumberCartEntries();
 		const cartTotal = await shoppingCart.cartTotal.innerText;
-		await t.expect(cartEntries).eql(2);
-		await t.expect(itemTotal).eql(parseInt(cartTotal));
+		await t
+			.expect(cartEntries).eql(2)
+			.expect(itemTotal).eql(parseInt(cartTotal));
 	}
 );
 
@@ -43,8 +60,9 @@ test.meta('category','shoppingCart')(
 		const itemTotal = await itemDetails.addItemToCart();
 		const cartEntries = await shoppingCart.getNumberCartEntries();
 		const cartTotal = await shoppingCart.cartTotal.innerText;
-		await t.expect(cartEntries).eql(1);
-		await t.expect(itemTotal).eql(cartTotal);
+		await t
+			.expect(cartEntries).eql(1)
+			.expect(itemTotal).eql(cartTotal);
 		await shoppingCart.deleteFirstItem();
 		await t.expect(shoppingCart.cartTotal.visible).notOk();
 	}

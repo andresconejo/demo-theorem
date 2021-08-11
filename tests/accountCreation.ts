@@ -15,8 +15,9 @@ test.meta('category','accountCreation')(
 		const randomUsername = faker.internet.userName();
 		await accountCreation.signUpWithValidCredentials(randomUsername, LoginCredentials.VALID_PASSWORD);
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.SIGN_UP_SUCCESSFUL);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.SIGN_UP_SUCCESSFUL);
 	}
 );
 
@@ -25,8 +26,9 @@ test.meta('category','accountCreation')(
 	async (t) => {
 		await accountCreation.signUpWithValidCredentials(LoginCredentials.VALID_USERNAME, LoginCredentials.VALID_PASSWORD);
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.USER_ALREADY_EXISTS);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.USER_ALREADY_EXISTS);
 	}
 );
 
@@ -37,8 +39,9 @@ test.meta('category','accountCreation')(
 		await accountCreation.typePasswordInTextbox(LoginCredentials.VALID_PASSWORD);
 		await accountCreation.clickSignUpWithDialogHandler();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
 	}
 );
 
@@ -50,8 +53,9 @@ test.meta('category','accountCreation')(
 		await accountCreation.typeUsernameInTextbox(randomUsername);
 		await accountCreation.clickSignUpWithDialogHandler();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
 	}
 );
 
@@ -61,8 +65,9 @@ test.meta('category','accountCreation')(
 		const randomUsername = faker.internet.userName();
 		await accountCreation.signUpWithValidCredentials(randomUsername, LoginCredentials.VALID_PASSWORD);
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.SIGN_UP_SUCCESSFUL);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.SIGN_UP_SUCCESSFUL);
 		await login.loginWithCredentials(randomUsername, LoginCredentials.VALID_PASSWORD);
 		await t.expect(login.nameOfUser.innerText).eql(`Welcome ${randomUsername}`);
 	}

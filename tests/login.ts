@@ -20,8 +20,9 @@ test.meta('category','login')(
 	async (t) => {
 		await login.loginWithInvalidCredentials(LoginCredentials.VALID_USERNAME, LoginCredentials.INVALID_PASSWORD);
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.WRONG_PASSWORD);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.WRONG_PASSWORD);
 	}
 );
 
@@ -30,8 +31,9 @@ test.meta('category','login')(
 	async (t) => {
 		await login.loginWithInvalidCredentials(LoginCredentials.INVALID_USERNAME, LoginCredentials.VALID_PASSWORD);
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.USER_DOES_NOT_EXIST);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.USER_DOES_NOT_EXIST);
 	}
 );
 
@@ -42,8 +44,9 @@ test.meta('category','login')(
 		await login.typeUsernameInTextbox(LoginCredentials.VALID_USERNAME);
 		await login.clickLoginWithDialogHandler();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
 	}
 );
 
@@ -54,7 +57,8 @@ test.meta('category','login')(
 		await login.typePasswordInTextbox(LoginCredentials.VALID_PASSWORD);
 		await login.clickLoginWithDialogHandler();
 		const modalError = await t.getNativeDialogHistory();
-		await t.expect(modalError[0].type).eql('alert');
-		await t.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
+		await t
+			.expect(modalError[0].type).eql('alert')
+			.expect(modalError[0].text).eql(VerificationMessages.EMPTY_USERNAME_PASSWORD);
 	}
 );

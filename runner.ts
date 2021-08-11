@@ -10,7 +10,7 @@ createTestCafe('localhost')
 
 		let browser;
 
-		if (argv.chromHeadless) {
+		if (argv.chromeHeadless) {
 			browser = 'chrome:headless';
 		} else if (argv.chrome) {
 			browser = 'chrome';

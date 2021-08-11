@@ -14,10 +14,18 @@ export class AccountCreation implements AccountCreationInterface {
 	public readonly closeButton = Selector('button').withText('Close');
 	public readonly singUpButton = Selector('button').withText('Sign up');
 
+	/**
+   * Clicks on signup from menu button, fills form and clicks on sign up
+   * @param username - Unique username
+   * @param password - Valid password
+   */
 	public async signUpWithValidCredentials(username: string, password: string): Promise<any> {
 		await t.click(dashboard.signUp);
-		await t.typeText(this.username, username).typeText(this.password, password);
-		await t.setNativeDialogHandler(() => true).click(this.singUpButton);
+		await t
+			.typeText(this.username, username)
+			.typeText(this.password, password)
+			.setNativeDialogHandler(() => true)
+			.click(this.singUpButton);
 	}
 
 	public async typeUsernameInTextbox(username: string): Promise<any> {
