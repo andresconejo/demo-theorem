@@ -76,7 +76,7 @@ NOTE: Depending on the OS (In my case MacOS) you may be prompted to allow TestCa
 In addition to the base execution, several options are available as parameters to execute as you see fit. For example executing the tests with no retry mechanism.
 
 ```sh
-git clone https://github.com/your_username_/Project-Name.git
+npm run test -- --noRetries
 ```
 
 ```markdown
@@ -84,6 +84,7 @@ git clone https://github.com/your_username_/Project-Name.git
 | -------------      | ------------- |
 | --noRetries  	     | Executes the tests without attempting to retry if failures  |
 | --concurrency      | Run the tests concurrently three at a time  |
+| --video            | Store local video recording if execution fails  |
 | --chrome  	     | Execute the tests in Chrome  |
 | --chrome:headless  | Execute the tests in Chrome headless mode  |
 | --firefox          | Execute the tests in Firefox  |
